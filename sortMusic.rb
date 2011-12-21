@@ -15,6 +15,14 @@ $invalid_characers = /[^a-zA-Z0-9\s_\-"()]/
 # file extensions currently supported
 $supported_extension_regex = /\.(mp3|m4a)/
 
+#
+# getFMTInfo
+# should return a hash with at the following 3 keys:
+#   :artist => song artist (fail if it doesn't exist)
+#   :album  => song album  ($default_album if it doesn't exist) 
+#   :title  => song title  (fail if it doesn't exist)
+#
+
 # gets the info hash from an mp3 file, using the progam eyeD3
 def getMp3Info(file)
   ret = {}
@@ -95,7 +103,6 @@ def moveSong(file)
   path = pathFromInfo(info)
   system("mkdir -p '#{path}'") 
   system("ln -s -f #{file} '#{path}/#{info[:title]}'")
-  # puts("ln -s #{file} '#{path}/#{info[:title]}'")
 end
 
 ARGV.each do |arg|

@@ -1,0 +1,12 @@
+A simple, straightforward ruby script to sort music files and symlink to them in your music 
+library which currently only supports mp4 and mp3 files.
+
+usage:
+$ sortMusic.rb [files...]
+
+If anybody for some reason decides they want to use this, they will need to download
+both eyeD3 and AtomicParsley.  They will probably also want to modify the global variables
+in the beginning of the script, and depending on how adventurous they are, the methods
+preprocessInfo and pathFromInfo.
+
+Tested only on 64 bit Ubuntu 11.10

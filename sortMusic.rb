@@ -7,7 +7,7 @@ $separator = '_'
 $default_album = "No Album"
 
 # the folder which contains your music library
-$library_root = "~/Music/Library"
+$library_root = "$HOME/Music/Library"
 
 # characters we won't allow in file names
 $invalid_characers = /[^a-zA-Z0-9\s_\-"()]/
@@ -81,7 +81,7 @@ end
 # Returns: a string of the path to where we want to put the song
 # NOTE: the final song will go in "#{pathFromInfo(info)/#{info[:title]}"
 def pathFromInfo(info)
-  return "#{$library_root}/#{info[:artist]}/#{info[:album]}"
+  return "#{$library_root}/'#{info[:artist]}'/'#{info[:album]}'"
 end
 
 # calls on the shell to
@@ -101,8 +101,8 @@ def moveSong(file)
   end
   preprocessInfo(info)
   path = pathFromInfo(info)
-  system("mkdir -p '#{path}'") 
-  system("ln -s -f #{file} '#{path}/#{info[:title]}'")
+  system("mkdir -p #{path}") 
+  system("ln -s -f #{file} #{path}/'#{info[:title]}'")
 end
 
 ARGV.each do |arg|
